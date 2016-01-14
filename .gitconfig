@@ -1,0 +1,7 @@
+[user]
+	name = Olivier Lemelin
+	email = lemelin.olivier@gmail.com
+[core]
+	autocrlf = input
+[push]
+	default = simple

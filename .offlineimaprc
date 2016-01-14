@@ -1,0 +1,39 @@
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = Gmail
+
+[Account Gmail]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = Gmail-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = Gmail-remote
+# Status cache. Default is plain, which eventually becomes huge and slow.
+status_backend = sqlite
+
+[Repository Gmail-local]
+# Currently, offlineimap only supports maildir and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/Mail/Gmail
+
+
+[Repository Gmail-remote]
+type = Gmail
+realdelete = no
+createfolders = False
+# nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+#                                re.sub ('sent_mail', 'sent',
+#                                re.sub ('starred', 'flagged',
+#                                re.sub (' ', '_', foldername.lower()))))
+# folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+
+# Necessary as of OfflineIMAP 6.5.4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"

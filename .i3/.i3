@@ -1,0 +1,1 @@
+/home/lemelino/dotfiles/.i3
